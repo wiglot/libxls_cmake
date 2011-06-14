@@ -1,24 +1,25 @@
 
-include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
-
+include_directories(${CMAKE_CURRENT_BINARY_DIR} ../ ../include)
 
 ########### next target ###############
 
 set(test_SRCS test.c)
 
-kde4_add_executable(test ${test_SRCS})
+add_executable(test ${test_SRCS})
 
-target_link_libraries(test ${KDE4_KDECORE_LIBS} xlsreader)
+target_link_libraries(test  xlsreader)
 
+add_test(Test1 test)
 
 ########### next target ###############
 
 set(test2_SRCS test2.c)
 
-kde4_add_executable(test2 ${test2_SRCS})
+add_executable(test2 ${test2_SRCS})
 
-target_link_libraries(test2 ${KDE4_KDECORE_LIBS} xlsreader)
+target_link_libraries(test2  xlsreader)
 
+add_test(Test2 test2)
 
 ########### install files ###############
 

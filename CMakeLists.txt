@@ -5,9 +5,13 @@ set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules ${CMAKE_MODULE_P
 
 find_package(ICONV)
 
+#need to create the config file.
+
+enable_testing()
+
 add_subdirectory(include)
 add_subdirectory(src)
-#add_subdirectory(test)
+add_subdirectory(test)
 
 
 ########### install files ###############
@@ -19,7 +23,7 @@ add_subdirectory(src)
 
 ### Process this file with automake to create Makefile.in.
 #AUTOMAKE_OPTIONS = foreign dist-zip
-#SUBDIRS = include src test 
+#SUBDIRS = include src test
 #
 ## Extra files to distribute
 #EXTRA_DIST = doc
