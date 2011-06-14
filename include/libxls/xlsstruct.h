@@ -311,35 +311,29 @@ typedef	struct st_sst
 }
 st_sst;
 
+typedef struct st_cell_data
+    {
+        WORD    id;
+        WORD    row;
+        WORD    col;
+        WORD    xf;
+        double  d;
+        long    l;
+        char*   str;        //String value;
+        BYTE    ishiden;    //Is cell hidden
+        WORD    width;      //Width of col
+        WORD    colspan;
+        WORD    rowspan;
+  } xlsCell;
 
 typedef	struct st_cell
 {
     DWORD count;
-    struct st_cell_data
-    {
-        WORD	id;
-        WORD	row;
-        WORD	col;
-        WORD	xf;
-        double	d;
-        long	l;
-        char*	str;		//String value;
-        BYTE	ishiden;	//Is cell hidden
-        WORD	width;		//Width of col
-        WORD	colspan;
-        WORD	rowspan;
-    }
-    * cell;
+
+    xlsCell * cell;
 }
 st_cell;
-
-
-typedef	struct st_row
-{
-    //	DWORD count;
-    WORD lastcol;
-    WORD lastrow;
-    struct st_row_data
+typedef struct st_row_data
     {
         WORD index;
         WORD fcell;
@@ -349,8 +343,15 @@ typedef	struct st_row
         WORD xf;
         BYTE xfflags;
         st_cell cells;
-    }
-    * row;
+    } xlsRow;
+
+typedef	struct st_row
+{
+    //	DWORD count;
+    WORD lastcol;
+    WORD lastrow;
+
+    xlsRow* row;
 }
 st_row;
 
@@ -405,8 +406,8 @@ typedef struct xlsWorkSheet
 }
 xlsWorkSheet;
 
-typedef struct st_cell_data xlsCell;
-typedef struct st_row_data xlsRow;
+//typedef struct st_cell_data xlsCell;
+//typedef struct st_row_data xlsRow;
 
 typedef struct xls_summaryInfo
 {
